@@ -1,0 +1,16 @@
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/business/OperadorBusiness.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/dao/TelefoneDAO.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/resource/OperadorResource.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/resource/PessoaResource.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/dao/OperadorDAO.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/entity/Telefone.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/dto/MensagemErroDto.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/JAXRSConfiguration.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/entity/Operador.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/dao/PessoaDAO.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/entity/Pessoa.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/resource/TelefoneResource.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/business/PessoaBusiness.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/business/TelefoneBusiness.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/utils/LocalDateConverter.java
+/Users/naiaramoura/eclipse-workspace/projetoTeste/src/main/java/br/com/naiara/ConstraintValidationMap.java

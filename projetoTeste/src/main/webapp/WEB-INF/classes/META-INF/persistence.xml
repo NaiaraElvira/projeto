@@ -1,0 +1,18 @@
+<persistence>
+    <persistence-unit name="javaee8">
+
+        <jta-data-source>java:jboss/datasources/PostgreSQLDS</jta-data-source>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.use_sql_comments" value="false"/>
+           </properties>
+
+			<class>br.com.naiara.entity.Operador</class>
+			<class>br.com.naiara.entity.Pessoa</class>
+			<class>br.com.naiara.entity.Telefone</class>
+
+    </persistence-unit>
+</persistence>
