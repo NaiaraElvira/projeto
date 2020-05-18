@@ -16,8 +16,10 @@ import javax.ws.rs.core.Response;
 
 import br.com.naiara.business.PessoaBusiness;
 import br.com.naiara.entity.Pessoa;
+import br.com.naiara.fiilter.JWTTokenNeeded;
 
 @Path("pessoa")
+@JWTTokenNeeded
 public class PessoaResource {
 	
 	@Inject

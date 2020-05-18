@@ -16,8 +16,10 @@ import javax.ws.rs.core.Response;
 
 import br.com.naiara.business.TelefoneBusiness;
 import br.com.naiara.entity.Telefone;
+import br.com.naiara.fiilter.JWTTokenNeeded;
 
 @Path("telefone")
+@JWTTokenNeeded
 public class TelefoneResource {
 	@Inject
 	private TelefoneBusiness telefoneBusiness;

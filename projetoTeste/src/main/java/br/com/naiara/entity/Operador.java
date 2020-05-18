@@ -6,15 +6,28 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import br.com.naiara.utils.PasswordUtils;
+
 @Entity
 @Table(name = "operador")
+@NamedQueries({
+	        @NamedQuery(name = Operador.FIND_BY_LOGIN_PASSWORD, query = "SELECT u FROM Operador u WHERE u.login = :login AND u.senha = :senha"),
+	})
 public class Operador {
+	
+    public static final String FIND_ALL = "User.findAll";
+    public static final String COUNT_ALL = "User.countAll";
+    public static final String FIND_BY_LOGIN_PASSWORD = "User.findByLoginAndPassword";
+
 	
 	@Id
 	@GeneratedValue
@@ -75,6 +88,12 @@ public class Operador {
 	public void setData_cadastro(Date data_cadastro) {
 		this.data_cadastro = data_cadastro;
 	}
+	
+	@PrePersist
+    private void setUUID() {
+	 senha = PasswordUtils.digestPassword(senha);
+    }
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

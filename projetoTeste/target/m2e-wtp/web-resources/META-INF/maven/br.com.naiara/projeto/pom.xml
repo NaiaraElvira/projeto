@@ -17,6 +17,7 @@
         <jakartaee>8.0</jakartaee>
         <junit>3.8.1</junit>
         <log4j-core>2.11.1</log4j-core>
+        <version.jjwt>0.7.0</version.jjwt>
     </properties>
     <dependencies>
         <dependency>
@@ -39,7 +40,7 @@
         <dependency>
 		    <groupId>io.jsonwebtoken</groupId>
 		    <artifactId>jjwt</artifactId>
-		    <version>0.7.0</version>
+		    <version>${version.jjwt}</version>
 		</dependency>
         
     </dependencies>

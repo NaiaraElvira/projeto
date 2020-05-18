@@ -16,8 +16,10 @@ import javax.ws.rs.core.Response;
 
 import br.com.naiara.business.OperadorBusiness;
 import br.com.naiara.entity.Operador;
+import br.com.naiara.fiilter.JWTTokenNeeded;
 
 @Path("operador")
+@JWTTokenNeeded
 public class OperadorResource {
 	
 	@Inject
