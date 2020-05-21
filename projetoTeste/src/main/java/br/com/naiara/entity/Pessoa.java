@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+
+import br.com.naiara.enumerator.TipoPessoaEnum;
 
 @Entity
 public class Pessoa {
@@ -31,12 +35,11 @@ public class Pessoa {
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	@Column(name="data_cadastro")
-	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCadastro;
 	@Column(name="tipo_pessoa")
-	@NotNull
-	private String tipoPessoa;
+    @Enumerated(EnumType.STRING)
+	private  TipoPessoaEnum tipoPessoa;
 	@Column(name="nome_mae")
 	private String nomeMae;
 	@Column(name="nome_pai")
@@ -88,11 +91,11 @@ public class Pessoa {
 		this.dataCadastro = dataCadastro;
 	}
 
-	public String getTipoPessoa() {
+	public TipoPessoaEnum getTipoPessoa() {
 		return tipoPessoa;
 	}
 
-	public void setTipoPessoa(String tipoPessoa) {
+	public void setTipoPessoa(TipoPessoaEnum tipoPessoa) {
 		this.tipoPessoa = tipoPessoa;
 	}
 

@@ -18,6 +18,7 @@
         <junit>3.8.1</junit>
         <log4j-core>2.11.1</log4j-core>
         <version.jjwt>0.7.0</version.jjwt>
+        <version.flywaydb>6.4.2</version.flywaydb>
     </properties>
     <dependencies>
         <dependency>
@@ -42,6 +43,10 @@
 		    <artifactId>jjwt</artifactId>
 		    <version>${version.jjwt}</version>
 		</dependency>
-        
+		<dependency>
+		    <groupId>org.flywaydb</groupId>
+		    <artifactId>flyway-core</artifactId>
+		    <version>${version.flywaydb}</version>
+		</dependency>
     </dependencies>
 </project>

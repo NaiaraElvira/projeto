@@ -21,9 +21,10 @@ public class TelefoneBusiness {
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void salvarTelefone(Telefone telefone) {
+	public void salvarTelefone(Telefone telefone, String username) {
 		Date dataHoraAtual = new Date();
 		telefone.setDataCadastro(dataHoraAtual);
+		telefone.setLogin(username);
 		telefoneDAO.salvarTelefone(telefone);
 	}
 	

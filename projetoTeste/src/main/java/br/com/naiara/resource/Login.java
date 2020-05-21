@@ -15,6 +15,7 @@ import javax.ws.rs.core.UriInfo;
 
 import br.com.naiara.domain.Credencials;
 import br.com.naiara.entity.Operador;
+import br.com.naiara.enumerator.PerfilEnum;
 import br.com.naiara.utils.KeyGenerator;
 import br.com.naiara.utils.PasswordUtils;
 
@@ -22,7 +23,6 @@ import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -38,9 +38,6 @@ public class Login {
     private UriInfo uriInfo;
 
     @Inject
-    private Logger logger;
-
-    @Inject
     private KeyGenerator keyGenerator;
 
     @PersistenceContext
@@ -52,9 +49,11 @@ public class Login {
     public Response authenticateUser(Credencials credencials) {
 
         try {
-            authenticate(credencials.getLogin(),  credencials.getPassword());
+        	Operador operator = authenticate(credencials.getLogin(),  credencials.getPassword());
 
-            String token = issueToken(credencials.getLogin());
+            String token = issueToken(credencials.getLogin(), operator.getPerfil());
+            
+    
 
             return Response.ok().header(AUTHORIZATION, "Bearer " + token).build();
 
@@ -63,17 +62,20 @@ public class Login {
         }
     }
 
-    private void authenticate(String login, String password) throws Exception {
+    private Operador authenticate(String login, String password) throws Exception {
         TypedQuery<Operador> query = em.createNamedQuery(Operador.FIND_BY_LOGIN_PASSWORD, Operador.class);
         query.setParameter("login", login);
         query.setParameter("senha", PasswordUtils.digestPassword(password));
         Operador user = query.getSingleResult();
-
+        
+        
         if (user == null)
             throw new SecurityException("Invalid user/password");
+        
+        return user;
     }
 
-    private String issueToken(String login) {
+    private String issueToken(String login, PerfilEnum perfil) {
         Key key = keyGenerator.generateKey();
         String jwtToken = Jwts.builder()
                 .setSubject(login)
@@ -81,6 +83,7 @@ public class Login {
                 .setIssuedAt(new Date())
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
                 .signWith(SignatureAlgorithm.HS512, key)
+                .claim("perfil", perfil.name())
                 .compact();
         return jwtToken;
 

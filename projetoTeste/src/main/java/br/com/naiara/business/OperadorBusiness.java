@@ -41,7 +41,7 @@ public class OperadorBusiness {
 		return operadorDAO.getById(id);
 	}
 	
-	public List<Operador> listar() {		
+	public List<Operador> listar() {	
 		return operadorDAO.listarOperadores();
 	}
 }

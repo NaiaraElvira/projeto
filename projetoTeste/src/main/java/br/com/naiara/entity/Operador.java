@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -14,7 +16,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import br.com.naiara.enumerator.PerfilEnum;
 import br.com.naiara.utils.PasswordUtils;
 
 @Entity
@@ -40,11 +44,11 @@ public class Operador {
 	@NotBlank
 	private String login;
 	@Column
-	@NotNull
-	@NotBlank
-	private String perfil;
+    @Enumerated(EnumType.STRING)
+	private PerfilEnum perfil;
 	@Column
 	@NotBlank
+	@Size(min = 6, max = 15)
 	private String senha;
 	@Column
 	@NotNull
@@ -69,10 +73,10 @@ public class Operador {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	public String getPerfil() {
+	public PerfilEnum getPerfil() {
 		return perfil;
 	}
-	public void setPerfil(String perfil) {
+	public void setPerfil(PerfilEnum perfil) {
 		this.perfil = perfil;
 	}
 	public String getSenha() {

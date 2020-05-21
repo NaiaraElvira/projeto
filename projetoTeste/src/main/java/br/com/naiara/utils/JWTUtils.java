@@ -1,24 +1,20 @@
 //package br.com.naiara.utils;
 //
-//import io.jsonwebtoken.Claims;
-//import io.jsonwebtoken.Jws;
-//import io.jsonwebtoken.Jwts;
-//import io.jsonwebtoken.SignatureAlgorithm;
+//import javax.annotation.Resource;
+//import javax.ejb.SessionContext;
+//import javax.ws.rs.core.Context;
+//import javax.ws.rs.core.SecurityContext;
+//
+//import br.com.naiara.fiilter.JWTPrincipal;
 //
 //public class JWTUtils {
-//	private static String key = "SECRET_TOKEN";
-//	public static final String TOKEN_HEADER = "Authorization";
+//	@Resource
+//    SessionContext context;
 //	
-//	// Criar o token
-//	public static String create(String subject) {
-//		return Jwts.builder()
-//				.setSubject(subject)
-//				.signWith(SignatureAlgorithm.HS512, key)
-//				.compact();
-//	}
+//	public  String getUsurioLogado() {
+//		String f = context.getCallerPrincipal().getName();
 //
-//	// Decodifica o token
-//	public static Jws<Claims> decote(String token) {
-//		return Jwts.parser().setSigningKey(key).parseClaimsJws(token);
+//		return f ;
 //	}
+//	
 //}
