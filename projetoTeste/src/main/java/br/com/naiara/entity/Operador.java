@@ -48,7 +48,6 @@ public class Operador {
 	private PerfilEnum perfil;
 	@Column
 	@NotBlank
-	@Size(min = 6, max = 15)
 	private String senha;
 	@Column
 	@NotNull

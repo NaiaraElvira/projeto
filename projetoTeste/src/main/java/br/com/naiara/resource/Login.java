@@ -51,7 +51,9 @@ public class Login {
         try {
         	Operador operator = authenticate(credencials.getLogin(),  credencials.getPassword());
 
-            String token = issueToken(credencials.getLogin(), operator.getPerfil());
+            String primeiroNome = operator.getNome().split(" ")[0];
+
+            String token = issueToken(credencials.getLogin(), operator.getPerfil(), primeiroNome);
             
     
 
@@ -68,14 +70,12 @@ public class Login {
         query.setParameter("senha", PasswordUtils.digestPassword(password));
         Operador user = query.getSingleResult();
         
-        
         if (user == null)
             throw new SecurityException("Invalid user/password");
-        
         return user;
     }
 
-    private String issueToken(String login, PerfilEnum perfil) {
+    private String issueToken(String login, PerfilEnum perfil, String primeiroNome) {
         Key key = keyGenerator.generateKey();
         String jwtToken = Jwts.builder()
                 .setSubject(login)
@@ -84,6 +84,7 @@ public class Login {
                 .setExpiration(toDate(LocalDateTime.now().plusMinutes(15L)))
                 .signWith(SignatureAlgorithm.HS512, key)
                 .claim("perfil", perfil.name())
+                .claim("nome", primeiroNome)
                 .compact();
         return jwtToken;
 

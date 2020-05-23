@@ -147,6 +147,4 @@ public class JWTTokenNeededFilter implements ContainerRequestFilter {
             return roles.contains(role);
         }
     }
-    
-    
 }

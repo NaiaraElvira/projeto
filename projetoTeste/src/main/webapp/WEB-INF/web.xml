@@ -15,6 +15,13 @@
        <param-name>resteasy.providers</param-name>
        <param-value>br.com.naiara.fiilter.JWTTokenNeededFilter</param-value>
     </context-param>
+    <context-param>
+       <description>Custom JAX-RS Providers2</description>
+       <param-name>
+            com.sun.jersey.spi.container.ContainerResponseFilters
+        </param-name>
+       <param-value>br.com.naiara.fiilter.CorsFilter</param-value>
+    </context-param>
        <context-param>
         <param-name>resteasy.role.based.security</param-name>
         <param-value>true</param-value>
