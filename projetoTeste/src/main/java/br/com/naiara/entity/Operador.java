@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -93,6 +94,7 @@ public class Operador {
 	}
 	
 	@PrePersist
+	@PreUpdate
     private void setUUID() {
 	 senha = PasswordUtils.digestPassword(senha);
     }
